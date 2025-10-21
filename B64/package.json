@@ -1,0 +1,27 @@
+{
+  "name": "image-to-base64-converter",
+  "version": "1.0.0",
+  "description": "Convierte imágenes en archivos HTML a formato base64",
+  "main": "convertToBase64.js",
+  "scripts": {
+    "convert": "node convertToBase64.js",
+    "restore": "node convertToBase64.js --restore",
+    "help": "node convertToBase64.js --help"
+  },
+  "keywords": [
+    "base64",
+    "images",
+    "html",
+    "converter",
+    "gif",
+    "webp"
+  ],
+  "author": "Image Converter",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
