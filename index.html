@@ -7,7 +7,23 @@
   <title>
     Axon Creative Selection
   </title>
+  <link rel="stylesheet" href="second-page-styles.css">
+  <link rel="stylesheet" href="second-page-custom-styles.css">
   <style>
+    /* Estilos para zoom en videos de second-page */
+    .sp-gif-card {
+      transition: transform 0.3s ease;
+      transform-origin: center center;
+    }
+
+    .sp-gif-card:hover {
+      transform: scale(1.02);
+    }
+
+    .sp-card {
+      overflow: hidden;
+    }
+
     .background {
       background-image: url("./assets/BACKGROUND.png");
       background-size: cover;
@@ -21,7 +37,6 @@
       align-items: center;
       flex-direction: column;
       overflow-x: hidden;
-      padding-left: 30px;
     }
 
     @font-face {
@@ -142,14 +157,11 @@
       background: none;
       transition: background 0.2s;
       margin-top: -10px;
+      
     }
 
     .dropdown-item:last-child {
       border-bottom: none;
-    }
-
-    .dropdown-item:hover {
-      /* background: #293544; */
     }
 
     .arrow.rotated {
@@ -294,6 +306,7 @@
       color: white;
       font-size: 28px;
       font-family: 'Mont', sans-serif;
+      padding-left: 30px;
 
     }
 
@@ -313,8 +326,9 @@
       height: auto;
       color: white;
       font-size: 38px;
-      margin-left: -3px;
       width: 100%;
+      padding-left: 30px;
+
     }
 
     .container-cards-1 {
@@ -328,6 +342,7 @@
       width: 100%;
       height: auto;
       margin-top: -10px;
+      padding-left: 30px;
     }
 
 
@@ -340,6 +355,9 @@
       column-gap: 60px;
       height: auto;
       margin-top: -10px;
+      padding-left: 30px;
+
+
     }
 
     .card {
@@ -485,6 +503,19 @@
 
     @media screen and (max-width: 1000px) {
 
+      /* Estilos para zoom en videos de second-page en móvil */
+      .sp-gif-card {
+        transition: transform 0.3s ease;
+        transform-origin: center center;
+      }
+
+      .sp-gif-card:hover {
+        transform: scale(1.04);
+      }
+
+      .sp-card {
+        overflow: hidden;
+      }
 
       .shadow {
         position: fixed;
@@ -594,14 +625,6 @@
         margin-left: 0px;
       }
 
-      .buttons-separator-back {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-
-
       .button-choose-creative.open {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -635,13 +658,13 @@
       }
 
       .dropdown-item {
-        padding: 20px 20px;
+        padding: 10px 20px;
         font-size: 13px;
         color: #fff;
         cursor: pointer;
         background: none;
         transition: background 0.2s;
-        margin-top: -30px;
+        margin-top: -10px;
       }
 
       .dropdown-item:last-child {
@@ -760,7 +783,7 @@
         position: relative;
         width: 400px;
         height: auto;
-        padding-left: 20px;
+        padding-left: 5px;
         padding-top: 10px;
         color: white;
         font-size: 18px;
@@ -783,7 +806,7 @@
         height: auto;
         color: white;
         font-size: 25px;
-        padding-left: 17px;
+        padding-left: 5px;
         margin-top: -10px;
         width: 400px;
       }
@@ -798,7 +821,7 @@
         width: 400px;
         height: auto;
         margin-top: -10px;
-        margin-left: 2px;
+        margin-left: -25px;
 
       }
 
@@ -812,7 +835,7 @@
         width: 400px;
         height: auto;
         margin-top: -10px;
-        margin-left: 2px;
+        margin-left: -25px;
       }
 
       .card {
@@ -948,6 +971,7 @@
         width: 400px;
         height: auto;
         margin-top: -10px;
+        margin-left: -20px;
       }
 
       .container-cards {
@@ -960,6 +984,7 @@
         width: 400px;
         height: auto;
         margin-top: -10px;
+        margin-left: -20px;
       }
 
       /* Contenedor para alinear botones en fila */
@@ -1005,131 +1030,6 @@
       }
 
 
-    }
-
-    /* Estilos para navegación entre páginas */
-    .first-page {
-      display: block;
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .second-page {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .first-page.hidden {
-      opacity: 0;
-    }
-
-    .second-page.visible {
-      display: block;
-      opacity: 1;
-    }
-
-    .first-page .card {
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .first-page .card:hover {
-      transform: scale(1.02);
-    }
-
-    /* Contenedor para alinear botones en fila */
-    .buttons-separator-back {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Estilos para botón de regresar */
-    .back-button {
-      position: fixed;
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      top: 100px;
-      left: 130px;
-      border-radius: 100px;
-      background-color: #171F26BF;
-      width: 40px;
-      height: 40px;
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .back-button img {
-      width: 34px;
-      height: 34px;
-      margin-top: 3px;
-      margin-left: -4px;
-    }
-
-    .back-button:hover {
-      transform: scale(1.1);
-    }
-
-    /* Animación fadeIn suave para contenido de second-page */
-    .second-page.visible>* {
-      animation: smoothFadeIn 0.8s ease-out forwards;
-      opacity: 0;
-    }
-
-    .second-page.visible>*:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .second-page.visible>*:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .second-page.visible>*:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .second-page.visible>*:nth-child(4) {
-      animation-delay: 0.35s;
-    }
-
-    .second-page.visible>*:nth-child(5) {
-      animation-delay: 0.4s;
-    }
-
-    .second-page.visible>*:nth-child(6) {
-      animation-delay: 0.45s;
-    }
-
-    .second-page.visible>*:nth-child(7) {
-      animation-delay: 0.5s;
-    }
-
-    .second-page.visible>*:nth-child(8) {
-      animation-delay: 0.55s;
-    }
-
-    .second-page.visible>*:nth-child(9) {
-      animation-delay: 0.6s;
-    }
-
-    .second-page.visible>*:nth-child(10) {
-      animation-delay: 0.65s;
-    }
-
-    @keyframes smoothFadeIn {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
     }
   </style>
 </head>
@@ -1544,16 +1444,16 @@
   <div class="second-page">
 
 
-    <div class="shadow">
+    <div class="sp-shadow">
 
     </div>
 
 
-    <div class="menus">
+    <div class="sp-menus">
 
-      <div class="header">
+      <div class="sp-header">
 
-        <img class="logo" src="./assets/LOGO.png" alt="Logo">
+        <img class="sp-logo" src="./assets/LOGO.png" alt="Logo">
 
       </div>
 
@@ -1561,118 +1461,115 @@
 
         <div class="buttons-separator-back">
 
-          <div class="button-choose-creative" type="menu">
+          <div class="sp-button-back" type="menu">
+            <img class="sp-arrow-back" src="./assets/BACK.svg" alt="Arrow">
+          </div>
+
+          <div class="sp-button-choose-creative" type="menu">
             Choose creative type
-            <img class="arrow" src="./assets/ARROW.svg" alt="Arrow">
+            <img class="sp-arrow" src="./assets/ARROW.svg" alt="Arrow">
           </div>
 
         </div>
 
 
-        <div class="dropdown-menu" style="display: none;">
+        <div class="sp-dropdown-menu" style="display: none;">
           <br />
 
-          <div class="dropdown-item">15s static video templates</div>
-          <div class="dropdown-item">59s video templates</div>
-          <div class="dropdown-item">UGC</div>
-          <div class="dropdown-item">AI UGC</div>
+          <div class="sp-dropdown-item">Axon Interactives</div>
+          <div class="sp-dropdown-item">Video Editing</div>
+          <div class="sp-dropdown-item">UGC Videos</div>
         </div>
       </div>
 
-      <div class="buttons-container">
+      <div class="sp-buttons-container">
 
-        <button class="button-html-convertor active" type="menu">15s static video templates</button>
+        <button class="sp-button-html-convertor sp-active" type="menu">15s static video templates</button>
 
 
-        <div class="buttons-separator">
+        <div class="sp-buttons-separator">
 
-          <button class="button-video-editing" type="menu">59s video templates</button>
+          <button class="sp-button-video-editing" type="menu">59s video templates</button>
 
-          <button class="button-ugc-video" type="menu">UGC</button>
+          <button class="sp-button-ugc-video" type="menu">UGC</button>
 
-          <button class="button-ai-ugc-video" type="menu">AI UGC</button>
+          <button class="sp-button-ai-ugc-video" type="menu">AI UGC</button>
 
 
         </div>
 
       </div>
+
 
     </div>
 
 
-    <div class="card-fixed">
+    <div class="sp-card-fixed">
 
-      <input class="input-bottom" placeholder="Type your descripion here..." type="text">
-      <img class="signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
-      <img class="button-arow" src="./assets/TEST.svg" alt="Arrow">
-      <img class="arrow-input" src="./assets/ARROW.svg" alt="Arrow">
+      <input class="sp-input-bottom" placeholder="Type your descripion here..." type="text">
+      <img class="sp-signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
+      <img class="sp-button-arow" src="./assets/TEST.svg" alt="Arrow">
+      <img class="sp-arrow-input" src="./assets/ARROW.svg" alt="Arrow">
 
     </div>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <div class="sp-menus-spacer"></div>
 
-    <p class="title">
+    
+
+
+    <p class="sp-title">
 
       Templates
 
     </p>
 
-    <p id="15s" class="current-templete">
+    <p id="15s" class="sp-current-templete">
 
       15s static video templates
 
     </p>
-    <br />
+    
 
-    <div class="container-cards">
+    <div class="sp-container-cards">
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/15s-video-01.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-01.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card"> 15s static video </p>
-          <p class="subtitle-card"> no animation, no music </p>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> no animation, no music </p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/15s-video-02.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-02.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card"> 15s static video </p>
-          <p class="subtitle-card"> no animation, no music </p>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> no animation, no music </p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/15s-video-03.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-03.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card"> 15s static video </p>
-          <p class="subtitle-card"> with animation, no music </p>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> with animation, no music </p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/15s-video-04.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-04.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card"> 15s static video </p>
-          <p class="subtitle-card"> with animation, and music </p>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> with animation, and music </p>
         </div>
       </div>
 
     </div>
 
     <br />
-    <p id="59s" class="current-templete">
+    <p id="59s" class="sp-current-templete">
 
       59s video templates
 
@@ -1680,29 +1577,29 @@
 
     <br />
 
-    <div class="container-cards">
+    <div class="sp-container-cards">
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/59s-video-01.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-01.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">59s image mash up</p>
-          <p class="subtitle-card">transition and animation</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">59s image mash up</p>
+          <p class="sp-subtitle-card">transition and animation</p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/59s-video-02.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-02.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">59s video and image</p>
-          <p class="subtitle-card">mashup</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">59s video and image</p>
+          <p class="sp-subtitle-card">mashup</p>
         </div>
       </div>
 
     </div>
 
     <br />
-    <p id="video-editing" class="current-templete">
+    <p id="video-editing" class="sp-current-templete">
 
       Video Editing
 
@@ -1710,29 +1607,29 @@
 
     <br />
 
-    <div class="container-cards">
+    <div class="sp-container-cards">
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/vid-edit-01.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-01.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Adding subtitles/</p>
-          <p class="subtitle-card">captions</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Adding subtitles/</p>
+          <p class="sp-subtitle-card">captions</p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/vid-edit-02.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-02.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Adding </p>
-          <p class="subtitle-card">disclaimer</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Adding </p>
+          <p class="sp-subtitle-card">disclaimer</p>
         </div>
       </div>
 
     </div>
 
     <br />
-    <p id="ugc" class="current-templete">
+    <p id="ugc" class="sp-current-templete">
 
       UGC
 
@@ -1740,22 +1637,22 @@
 
     <br />
 
-    <div class="container-cards">
+    <div class="sp-container-cards">
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ugc-01.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-01.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Product</p>
-          <p class="subtitle-card">review</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product</p>
+          <p class="sp-subtitle-card">review</p>
         </div>
       </div>
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ugc-02.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-02.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Product </p>
-          <p class="subtitle-card">Tryon</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">Tryon</p>
         </div>
       </div>
 
@@ -1763,7 +1660,7 @@
 
 
     <br />
-    <p id="ai-ugc" class="current-templete">
+    <p id="ai-ugc" class="sp-current-templete">
 
       AI UGC
 
@@ -1771,50 +1668,50 @@
 
     <br />
 
-    <div class="container-cards">
+    <div class="sp-container-cards">
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-01.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-01.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">AI</p>
-          <p class="subtitle-card">Intro</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">AI</p>
+          <p class="sp-subtitle-card">Intro</p>
         </div>
       </div>
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-02.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-02.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Product </p>
-          <p class="subtitle-card">Try on</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">Try on</p>
         </div>
       </div>
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-03.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-03.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Product</p>
-          <p class="subtitle-card">review</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product</p>
+          <p class="sp-subtitle-card">review</p>
         </div>
       </div>
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-04.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-04.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Product </p>
-          <p class="subtitle-card">showcasing</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">showcasing</p>
         </div>
       </div>
 
-      <div class="card">
-        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-05.mp4" alt="">
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-05.mp4" preload="none" alt="">
         </video>
-        <div class="text-container">
-          <p class="title-card">Street </p>
-          <p class="subtitle-card">Interview</p>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Street </p>
+          <p class="sp-subtitle-card">Interview</p>
         </div>
       </div>
 
@@ -1833,27 +1730,138 @@
 
   <script>
 
+    // Video cache para lazy loading y carga rápida
+    const videoCache = new Map();
+    let videosLoaded = false;
+
+    // Función para precargar y cachear videos
+    function preloadVideos() {
+      if (videosLoaded) return;
+      
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('video[data-src]');
+      
+      videos.forEach((video, index) => {
+        const src = video.getAttribute('data-src');
+        
+        // Verificar si el video ya está en caché
+        if (videoCache.has(src)) {
+          video.src = src;
+          video.load();
+          return;
+        }
+
+        // Cargar video con un pequeño delay para no sobrecargar
+        setTimeout(() => {
+          // Crear un objeto de video temporal para cachear
+          const tempVideo = document.createElement('video');
+          tempVideo.preload = 'auto';
+          tempVideo.src = src;
+          
+          tempVideo.addEventListener('loadeddata', () => {
+            videoCache.set(src, true);
+            video.src = src;
+            video.load();
+            
+            // Intentar reproducir el video
+            video.play().catch(err => {
+              // Ignorar errores de autoplay
+              console.log('Autoplay prevented for:', src);
+            });
+          });
+          
+          tempVideo.load();
+        }, index * 100); // Delay escalonado para evitar sobrecarga
+      });
+      
+      videosLoaded = true;
+    }
+
+    // Función para pausar videos cuando se sale de la segunda página
+    function pauseSecondPageVideos() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+      
+      const videos = secondPage.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+      });
+    }
+
+    // Función para reproducir videos cuando se entra a la segunda página
+    function playSecondPageVideos() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+      
+      const videos = secondPage.querySelectorAll('video');
+      videos.forEach(video => {
+        if (video.src) {
+          video.play().catch(err => {
+            console.log('Autoplay prevented');
+          });
+        }
+      });
+    }
+
+    // Función para configurar eventos de hover/touch en videos
+    function setupVideoInteractions() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('.sp-gif-card');
+      
+      videos.forEach(video => {
+        // Evento para mouse hover (desktop)
+        video.addEventListener('mouseenter', function() {
+          this.muted = false;
+          this.volume = 1.0;
+        });
+
+        video.addEventListener('mouseleave', function() {
+          this.muted = true;
+        });
+
+        // Eventos para touch (mobile/tablet)
+        video.addEventListener('touchstart', function(e) {
+          // Prevenir el comportamiento por defecto solo si es necesario
+          this.muted = false;
+          this.volume = 1.0;
+        });
+
+        video.addEventListener('touchend', function(e) {
+          this.muted = true;
+        });
+
+        // Evento para cuando el touch se cancela (por ejemplo, al hacer scroll)
+        video.addEventListener('touchcancel', function(e) {
+          this.muted = true;
+        });
+      });
+    }
+
     // Dropdown logic for .button-choose-creative-wrapper
     const wrappers = document.querySelectorAll('.button-choose-creative-wrapper');
 
     wrappers.forEach(wrapper => {
-      const button = wrapper.querySelector('.button-choose-creative');
-      const dropdown = wrapper.querySelector('.dropdown-menu');
-      const arrow = wrapper.querySelector('.arrow');
+      const button = wrapper.querySelector('.button-choose-creative, .sp-button-choose-creative');
+      const dropdown = wrapper.querySelector('.dropdown-menu, .sp-dropdown-menu');
+      const arrow = wrapper.querySelector('.arrow, .sp-arrow');
 
       function openDropdown() {
         dropdown.style.display = 'block';
         dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
         dropdown.style.opacity = '1';
-        arrow.classList.add('rotated');
-        button.classList.add('open');
+        arrow.classList.add('rotated', 'sp-rotated');
+        button.classList.add('open', 'sp-open');
       }
 
       function closeDropdown() {
         dropdown.style.maxHeight = '0';
         dropdown.style.opacity = '0';
-        arrow.classList.remove('rotated');
-        button.classList.remove('open');
+        arrow.classList.remove('rotated', 'sp-rotated');
+        button.classList.remove('open', 'sp-open');
         setTimeout(() => {
           dropdown.style.display = 'none';
         }, 350);
@@ -1876,8 +1884,8 @@
       });
     });
 
-    // Button selection logic for .buttons-container
-    const buttonsContainers = document.querySelectorAll('.buttons-container');
+    // Button selection logic for .buttons-container and .sp-buttons-container
+    const buttonsContainers = document.querySelectorAll('.buttons-container, .sp-buttons-container');
 
     buttonsContainers.forEach(buttonsContainer => {
       const buttons = buttonsContainer.querySelectorAll('button');
@@ -1886,10 +1894,10 @@
         button.addEventListener('click', function () {
           // Remove active class from all buttons in this container
           buttons.forEach(btn => {
-            btn.classList.remove('active');
+            btn.classList.remove('active', 'sp-active');
           });
           // Add active class to clicked button
-          this.classList.add('active');
+          this.classList.add('active', 'sp-active');
         });
       });
     });
@@ -1928,6 +1936,16 @@
           if (backButton) {
             backButton.style.display = 'flex';
           }
+
+          // Cargar videos con lazy loading
+          preloadVideos();
+          
+          // Reproducir videos después de un pequeño delay
+          setTimeout(() => {
+            playSecondPageVideos();
+            // Configurar interacciones de hover/touch en videos
+            setupVideoInteractions();
+          }, 200);
         }, 500); // Duración del fade out
       }
     }
@@ -1940,6 +1958,9 @@
       if (firstPage && secondPage) {
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Pausar videos de la segunda página
+        pauseSecondPageVideos();
 
         // Fade out second-page
         secondPage.classList.remove('visible');
@@ -1963,14 +1984,14 @@
       }
     }
 
-    // Agregar event listeners a todas las cards dentro de first-page
-    const firstPage = document.querySelector('.first-page');
-    if (firstPage) {
-      const cards = firstPage.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.addEventListener('click', function () {
-          navigateToSecondPage();
-        });
+    // Event listeners para las cards de first-page removidos
+    // Las cards ya no navegan a la segunda página
+
+    // Agregar event listener al botón de regresar sp-button-back
+    const spBackButton = document.querySelector('.sp-button-back');
+    if (spBackButton) {
+      spBackButton.addEventListener('click', function () {
+        navigateToFirstPage();
       });
     }
 
@@ -2003,10 +2024,10 @@
     // Scroll functionality for second-page buttons
     const secondPage = document.querySelector('.second-page');
     if (secondPage) {
-      const secondPageHtmlButtons = secondPage.querySelectorAll('.button-html-convertor');
-      const secondPageVideoButtons = secondPage.querySelectorAll('.button-video-editing');
-      const secondPageUgcButtons = secondPage.querySelectorAll('.button-ugc-video');
-      const secondPageAiUgcButtons = secondPage.querySelectorAll('.button-ai-ugc-video');
+      const secondPageHtmlButtons = secondPage.querySelectorAll('.sp-button-html-convertor');
+      const secondPageVideoButtons = secondPage.querySelectorAll('.sp-button-video-editing');
+      const secondPageUgcButtons = secondPage.querySelectorAll('.sp-button-ugc-video');
+      const secondPageAiUgcButtons = secondPage.querySelectorAll('.sp-button-ai-ugc-video');
 
       secondPageHtmlButtons.forEach(button => {
         button.addEventListener('click', function () {
@@ -2053,6 +2074,110 @@
       });
     }
 
+    // Funcionalidad para el botón "Axon Interactives" del dropdown en first-page
+    const firstPageDropdownItems = document.querySelectorAll('.first-page .dropdown-item');
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Axon Interactives') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('interactives');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Axon Interactives" del dropdown en second-page
+    const secondPageDropdownItems = document.querySelectorAll('.second-page .sp-dropdown-item');
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Axon Interactives') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la primera página
+          navigateToFirstPage();
+          
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('interactives');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 300;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Video Editing" del dropdown en first-page
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Video Editing') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la segunda página
+          navigateToSecondPage();
+          
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('15s');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 400;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Video Editing" del dropdown en second-page
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Video Editing') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('15s');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "UGC Videos" del dropdown en first-page
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'UGC Videos') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la segunda página
+          navigateToSecondPage();
+          
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('ugc');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 300;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "UGC Videos" del dropdown en second-page
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'UGC Videos') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('ugc');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
 
   </script>
 
@@ -2060,4 +2185,4 @@
 
 </body>
 
-</html>>
+</html>

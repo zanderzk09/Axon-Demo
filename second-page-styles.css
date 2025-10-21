@@ -1,0 +1,131 @@
+/* Estilos para navegación entre páginas */
+.first-page {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.second-page {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .second-page {
+    width: auto;
+  }
+}
+
+.first-page.hidden {
+  opacity: 0;
+}
+
+.second-page.visible {
+  display: block;
+  opacity: 1;
+}
+
+.first-page .card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.first-page .card:hover {
+  transform: scale(1.02);
+}
+
+/* Contenedor para alinear botones en fila */
+.buttons-separator-back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilos para botón de regresar */
+.back-button {
+  position: fixed;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  top: 100px;
+  left: 130px;
+  border-radius: 100px;
+  background-color: #171F26BF;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button img {
+  width: 34px;
+  height: 34px;
+  margin-top: 3px;
+  margin-left: -4px;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+/* Animación fadeIn suave para contenido de second-page */
+.second-page.visible>* {
+  animation: smoothFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.second-page.visible>*:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.second-page.visible>*:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.second-page.visible>*:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.second-page.visible>*:nth-child(4) {
+  animation-delay: 0.35s;
+}
+
+.second-page.visible>*:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.second-page.visible>*:nth-child(6) {
+  animation-delay: 0.45s;
+}
+
+.second-page.visible>*:nth-child(7) {
+  animation-delay: 0.5s;
+}
+
+.second-page.visible>*:nth-child(8) {
+  animation-delay: 0.55s;
+}
+
+.second-page.visible>*:nth-child(9) {
+  animation-delay: 0.6s;
+}
+
+.second-page.visible>*:nth-child(10) {
+  animation-delay: 0.65s;
+}
+
+@keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
