@@ -9,20 +9,19 @@
   </title>
   <style>
     .background {
-      background-image: url("../assets/BACKGROUND.png");
+      background-image: url("./assets/BACKGROUND.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
       background-color: black;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       overflow-x: hidden;
       padding-left: 30px;
-
     }
 
     @font-face {
@@ -33,7 +32,7 @@
     .shadow {
       position: fixed;
       width: 8000px;
-      height: 300px;
+      height: 350px;
       top: 0;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
       z-index: 1;
@@ -67,14 +66,12 @@
       transform: translateX(-50%);
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: start;
       flex-direction: column;
       width: 100%;
       height: auto;
       padding: 10px;
       z-index: 100;
-
-
     }
 
 
@@ -88,7 +85,7 @@
       display: flex;
       justify-content: start;
       align-items: center;
-      width: 975px;
+      width: 950px;
       height: 70px;
       border-radius: 50px;
       background-color: #171F26BF;
@@ -99,7 +96,8 @@
       user-select: none;
       transition: border-radius 0s cubic-bezier(.4, 0, .2, 1);
       padding-left: 20px;
-      font-family: 'Mont';
+      margin-left: 30px;
+      font-family: 'Mont', sans-serif;
     }
 
     .button-choose-creative.open {
@@ -111,11 +109,12 @@
 
     }
 
+
     .dropdown-menu {
       position: relative;
       top: 0;
-      left: 0;
-      width: 100%;
+      left: 30px;
+      width: 97%;
       background-color: #171F26BF;
       z-index: 10;
       overflow: hidden;
@@ -125,6 +124,7 @@
       border-bottom-left-radius: 30px;
       border-bottom-right-radius: 30px;
       display: none;
+
     }
 
     .dropdown-menu[style*="display: none"] {
@@ -159,12 +159,12 @@
     .buttons-container {
       position: relative;
       display: flex;
-      justify-content: center;
+      justify-content: start;
       align-items: start;
       width: 100%;
       height: auto;
       padding: 30px;
-      padding-left: 20px;
+      padding-left: 35px;
       gap: 10px;
     }
 
@@ -180,13 +180,28 @@
       color: white;
       border: none;
       font-size: 18px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
 
     .buttons-separator {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      width: auto;
+      height: 50px;
+      border-radius: 50px;
+      color: white;
+      border: none;
+      font-size: 13px;
+      gap: 5px;
+    }
+
+    .button-choose-creative-two {
       position: relative;
       display: flex;
       justify-content: center;
@@ -218,7 +233,7 @@
       color: white;
       border: none;
       font-size: 18px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -240,7 +255,7 @@
       color: white;
       border: none;
       font-size: 18px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -262,7 +277,7 @@
       color: white;
       border: none;
       font-size: 18px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -278,7 +293,7 @@
       margin-top: 20px;
       color: white;
       font-size: 28px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
 
     }
 
@@ -298,7 +313,7 @@
       height: auto;
       color: white;
       font-size: 38px;
-      margin-left: -5px;
+      margin-left: -3px;
       width: 100%;
     }
 
@@ -357,7 +372,7 @@
       font-size: 16px;
       margin-top: 55px;
       margin-left: -10px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
 
     }
 
@@ -367,7 +382,7 @@
       font-size: 13px;
       margin-top: 90px;
       margin-left: -10px;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
 
     }
 
@@ -421,7 +436,7 @@
       background-color: #D9D9D91A;
       border: none;
       color: white;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
       font-size: 15px;
       padding-left: 15px;
       padding-bottom: 20px;
@@ -436,7 +451,7 @@
 
     .input-bottom::placeholder {
       color: #FFFFFF80;
-      font-family: 'Mont';
+      font-family: 'Mont', sans-serif;
 
     }
 
@@ -576,6 +591,7 @@
         user-select: none;
         transition: border-radius 0s cubic-bezier(.4, 0, .2, 1), width 0.3s ease;
         margin-top: 10px;
+        margin-left: 0px;
       }
 
       .buttons-separator-back {
@@ -737,7 +753,7 @@
         color: white;
         border: none;
         font-size: 13px;
-        font-family: 'Mont';
+        font-family: 'Mont', sans-serif;
       }
 
       .title {
@@ -1131,7 +1147,7 @@
 
       <div class="header">
 
-        <img class="logo" src="../assets/LOGO.png" alt="Logo">
+        <img class="logo" src="./assets/LOGO.png" alt="Logo">
 
       </div>
 
@@ -1139,7 +1155,7 @@
 
         <div class="button-choose-creative" type="menu">
           Choose creative type
-          <img class="arrow" src="../assets/ARROW.svg" alt="Arrow">
+          <img class="arrow" src="./assets/ARROW.svg" alt="Arrow">
         </div>
 
 
@@ -1172,9 +1188,9 @@
     <div class="card-fixed">
 
       <input class="input-bottom" placeholder="Type your descripion here..." type="text">
-      <img class="signo-mas" src="../assets/SIGNO MAS.svg" alt="Arrow">
-      <img class="button-arow" src="../assets/TEST.svg" alt="Arrow">
-      <img class="arrow-input" src="../assets/ARROW.svg" alt="Arrow">
+      <img class="signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
+      <img class="button-arow" src="./assets/TEST.svg" alt="Arrow">
+      <img class="arrow-input" src="./assets/ARROW.svg" alt="Arrow">
 
     </div>
 
@@ -1200,12 +1216,12 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image11.gif" alt="">
+          <img class="gif-card" src="./assets/image1.gif" alt="">
 
           <div class="text-container">
 
             <p class="title-card">
-              Image convert options
+              Image convert to HTML
             </p>
 
             <p class="subtitle-card">
@@ -1218,7 +1234,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image9.gif" alt="">
+          <img class="gif-card" src="./assets/image10.gif" alt="">
 
           <div class="text-container">
 
@@ -1254,43 +1270,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image11.gif" alt="">
-
-          <div class="text-container">
-
-            <p class="title-card">
-              Image convert options
-            </p>
-
-            <p class="subtitle-card">
-              Secondary text
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img class="gif-card" src="../assets/image9.gif" alt="">
-
-          <div class="text-container">
-
-            <p class="title-card">
-              Video convert to HTML
-            </p>
-
-            <p class="subtitle-card">
-              Secondary text
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img class="gif-card" src="../assets/image15.gif" alt="">
+          <img class="gif-card" src="./assets/image15.gif" alt="">
 
           <div class="text-container">
 
@@ -1308,7 +1288,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image11.gif" alt="">
+          <img class="gif-card" src="./assets/image11.gif" alt="">
 
           <div class="text-container">
 
@@ -1317,7 +1297,7 @@
             </p>
 
             <p class="subtitle-card">
-              Secondary texts
+              Secondary text
             </p>
 
           </div>
@@ -1326,7 +1306,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image6.gif" alt="">
+          <img class="gif-card" src="./assets/image6.gif" alt="">
 
           <div class="text-container">
 
@@ -1344,7 +1324,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image7.gif" alt="">
+          <img class="gif-card" src="./assets/image7.gif" alt="">
 
           <div class="text-container">
 
@@ -1362,43 +1342,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image6.gif" alt="">
-
-          <div class="text-container">
-
-            <p class="title-card">
-              Review
-            </p>
-
-            <p class="subtitle-card">
-              Secondary text
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img class="gif-card" src="../assets/image7.gif" alt="">
-
-          <div class="text-container">
-
-            <p class="title-card">
-              Notes
-            </p>
-
-            <p class="subtitle-card">
-              Secondary text
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img class="gif-card" src="../assets/image3.gif" alt="">
+          <img class="gif-card" src="./assets/image3.gif" alt="">
 
           <div class="text-container">
 
@@ -1416,7 +1360,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image4.gif" alt="">
+          <img class="gif-card" src="./assets/image4.gif" alt="">
 
           <div class="text-container">
 
@@ -1434,7 +1378,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image14.gif" alt="">
+          <img class="gif-card" src="./assets/image14.gif" alt="">
 
           <div class="text-container">
 
@@ -1452,7 +1396,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image2.gif" alt="">
+          <img class="gif-card" src="./assets/image2.gif" alt="">
 
           <div class="text-container">
 
@@ -1470,7 +1414,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image12.gif" alt="">
+          <img class="gif-card" src="./assets/image12.gif" alt="">
 
           <div class="text-container">
 
@@ -1488,7 +1432,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image13.gif" alt="">
+          <img class="gif-card" src="./assets/image13.gif" alt="">
 
           <div class="text-container">
 
@@ -1506,7 +1450,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image5.gif" alt="">
+          <img class="gif-card" src="./assets/image5.gif" alt="">
 
           <div class="text-container">
 
@@ -1524,7 +1468,7 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image8.gif" alt="">
+          <img class="gif-card" src="./assets/image8.gif" alt="">
 
           <div class="text-container">
 
@@ -1542,12 +1486,30 @@
 
         <div class="card">
 
-          <img class="gif-card" src="../assets/image9.gif" alt="">
+          <img class="gif-card" src="./assets/image9.gif" alt="">
 
           <div class="text-container">
 
             <p class="title-card">
               Gamified Quiz
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image16.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Gamified Product Page
             </p>
 
             <p class="subtitle-card">
@@ -1591,9 +1553,7 @@
 
       <div class="header">
 
-
-
-        <img class="logo" src="../assets/LOGO.png" alt="Logo">
+        <img class="logo" src="./assets/LOGO.png" alt="Logo">
 
       </div>
 
@@ -1603,7 +1563,7 @@
 
           <div class="button-choose-creative" type="menu">
             Choose creative type
-            <img class="arrow" src="../assets/ARROW.svg" alt="Arrow">
+            <img class="arrow" src="./assets/ARROW.svg" alt="Arrow">
           </div>
 
         </div>
@@ -1643,9 +1603,9 @@
     <div class="card-fixed">
 
       <input class="input-bottom" placeholder="Type your descripion here..." type="text">
-      <img class="signo-mas" src="../assets/SIGNO MAS.svg" alt="Arrow">
-      <img class="button-arow" src="../assets/TEST.svg" alt="Arrow">
-      <img class="arrow-input" src="../assets/ARROW.svg" alt="Arrow">
+      <img class="signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
+      <img class="button-arow" src="./assets/TEST.svg" alt="Arrow">
+      <img class="arrow-input" src="./assets/ARROW.svg" alt="Arrow">
 
     </div>
 
@@ -1659,8 +1619,7 @@
     <br />
     <br />
     <br />
-
-
+    <br />
 
     <p class="title">
 
@@ -1678,7 +1637,7 @@
     <div class="container-cards">
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/15s-video-01.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/15s-video-01.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card"> 15s static video </p>
@@ -1686,7 +1645,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/15s-video-02.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/15s-video-02.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card"> 15s static video </p>
@@ -1694,7 +1653,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/15s-video-03.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/15s-video-03.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card"> 15s static video </p>
@@ -1702,7 +1661,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/15s-video-04.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/15s-video-04.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card"> 15s static video </p>
@@ -1724,7 +1683,7 @@
     <div class="container-cards">
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/59s-video-01.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/59s-video-01.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">59s image mash up</p>
@@ -1732,7 +1691,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/59s-video-02.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/59s-video-02.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">59s video and image</p>
@@ -1754,7 +1713,7 @@
     <div class="container-cards">
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/vid-edit-01.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/vid-edit-01.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Adding subtitles/</p>
@@ -1762,7 +1721,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/vid-edit-02.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/vid-edit-02.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Adding </p>
@@ -1784,7 +1743,7 @@
     <div class="container-cards">
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ugc-01.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ugc-01.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Product</p>
@@ -1792,7 +1751,7 @@
         </div>
       </div>
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ugc-02.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ugc-02.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Product </p>
@@ -1815,7 +1774,7 @@
     <div class="container-cards">
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ai-ugc-01.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-01.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">AI</p>
@@ -1824,7 +1783,7 @@
       </div>
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ai-ugc-02.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-02.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Product </p>
@@ -1833,7 +1792,7 @@
       </div>
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ai-ugc-03.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-03.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Product</p>
@@ -1842,7 +1801,7 @@
       </div>
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ai-ugc-04.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-04.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Product </p>
@@ -1851,7 +1810,7 @@
       </div>
 
       <div class="card">
-        <video autoplay muted loop class="gif-card" src="../assets/ai-ugc-05.mp4" alt="">
+        <video autoplay muted loop class="gif-card" src="./assets/ai-ugc-05.mp4" alt="">
         </video>
         <div class="text-container">
           <p class="title-card">Street </p>
