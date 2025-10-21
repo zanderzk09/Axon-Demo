@@ -343,6 +343,7 @@
   border-radius: 30px;
   padding-top: 25px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .sp-text-container {
