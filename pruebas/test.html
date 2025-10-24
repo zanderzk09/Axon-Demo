@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Axon Creative Selection
+  </title>
+  <link rel="stylesheet" href="second-page-styles.css">
+  <link rel="stylesheet" href="second-page-custom-styles.css">
+  <style>
+    /* Estilos para zoom en videos de second-page */
+    .sp-gif-card {
+      transition: transform 0.3s ease;
+      transform-origin: center center;
+    }
+
+    .sp-gif-card:hover {
+      transform: scale(1.02);
+    }
+
+    .sp-card {
+      overflow: hidden;
+    }
+
+    .background {
+      background-image: url("./assets/BACKGROUND.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-color: black;
+      font-family: 'Mont', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    @font-face {
+      font-family: 'Mont';
+      src: url("./fonts/Mont-Light.otf");
+    }
+
+    .shadow {
+      position: fixed;
+      width: 8000px;
+      height: 350px;
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+      z-index: 1;
+      margin-left: -400px;
+    }
+
+    .header {
+      position: relative;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      width: 100%;
+      height: auto;
+
+    }
+
+    .logo {
+      position: relative;
+      width: 200px;
+      height: auto;
+      padding: 10px;
+      margin-left: 29px;
+
+
+    }
+
+    .menus {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      z-index: 100;
+    }
+
+
+    .menus-spacer {
+      width: 100%;
+      height: 240px;
+    }
+
+    .button-choose-creative {
+      position: relative;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      width: 950px;
+      height: 70px;
+      border-radius: 50px;
+      background-color: #171F26BF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      user-select: none;
+      transition: border-radius 0s cubic-bezier(.4, 0, .2, 1);
+      padding-left: 20px;
+      margin-left: 30px;
+      font-family: 'Mont', sans-serif;
+    }
+
+    .button-choose-creative.open {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      transition: border-radius 0s cubic-bezier(.4, 0, .2, 1);
+
+    }
+
+
+    .dropdown-menu {
+      position: relative;
+      top: 0;
+      left: 30px;
+      width: 97%;
+      background-color: #171F26BF;
+      z-index: 10;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(.4, 0, .2, 1), opacity 0.35s cubic-bezier(.4, 0, .2, 1);
+      opacity: 0;
+      max-height: 0;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      display: none;
+
+    }
+
+    .dropdown-menu[style*="display: none"] {
+      opacity: 0;
+      max-height: 0;
+      pointer-events: none;
+      transition: max-height 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .dropdown-item {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+      background: none;
+      transition: background 0.2s;
+      margin-top: -10px;
+
+    }
+
+    .dropdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .arrow.rotated {
+      transform: rotate(90deg);
+    }
+
+    .buttons-container {
+      position: relative;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      width: 100%;
+      height: auto;
+      padding: 30px;
+      padding-left: 35px;
+      gap: 10px;
+    }
+
+    .button-html-convertor {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 50px;
+      border-radius: 50px;
+      background-color: #171F26BF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      font-family: 'Mont', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+
+    .buttons-separator {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      width: auto;
+      height: 50px;
+      border-radius: 50px;
+      color: white;
+      border: none;
+      font-size: 13px;
+      gap: 5px;
+    }
+
+    .button-choose-creative-two {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      width: auto;
+      height: 50px;
+      border-radius: 50px;
+      color: white;
+      border: none;
+      font-size: 13px;
+      gap: 5px;
+    }
+
+    .button-html-convertor.active {
+      background-color: #0846FFBF;
+    }
+
+    .button-video-editing {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 220px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 50px;
+      background-color: #171F26BF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      font-family: 'Mont', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-video-editing.active {
+      background-color: #0846FFBF;
+    }
+
+    .button-ugc-video {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 50px;
+      background-color: #171F26BF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      font-family: 'Mont', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-ugc-video.active {
+      background-color: #0846FFBF;
+    }
+
+    .button-ai-ugc-video {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 130px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 50px;
+      background-color: #171F26BF;
+      color: white;
+      border: none;
+      font-size: 18px;
+      font-family: 'Mont', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-ai-ugc-video.active {
+      background-color: #0846FFBF;
+    }
+
+    .title {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      color: white;
+      font-size: 28px;
+      font-family: 'Mont', sans-serif;
+      padding-left: 30px;
+
+    }
+
+    .cards {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      padding-bottom: 150px;
+    }
+
+    .current-templete {
+      position: relative;
+      height: auto;
+      color: white;
+      font-size: 38px;
+      width: 100%;
+      padding-left: 30px;
+
+    }
+
+    .container-cards-1 {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      align-items: start;
+      columns: 2;
+      column-gap: 60px;
+      width: 100%;
+      height: auto;
+      margin-top: -10px;
+      padding-left: 30px;
+    }
+
+
+    .container-cards {
+      position: relative;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      flex-wrap: wrap;
+      column-gap: 60px;
+      height: auto;
+      margin-top: -10px;
+      padding-left: 30px;
+
+
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 280px;
+      height: 480px;
+      background-color: #171F26BF;
+      border-radius: 30px;
+      padding-top: 25px;
+      margin-bottom: 30px;
+    }
+
+    .text-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 220px;
+      height: auto;
+    }
+
+    .title-card {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      margin-top: 55px;
+      margin-left: -10px;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .subtitle-card {
+      position: absolute;
+      color: white;
+      font-size: 13px;
+      margin-top: 90px;
+      margin-left: -10px;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .gif-card {
+      position: relative;
+      width: 240px;
+      height: auto;
+      border-radius: 20px;
+      margin-top: -60px;
+    }
+
+    .container-templetes-title {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 400px;
+      height: auto;
+      padding-left: 30px;
+      gap: 20px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 25px;
+      width: 10px;
+      height: auto;
+    }
+
+    .card-fixed {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #171F26FA;
+      width: 600px;
+      height: 140px;
+      bottom: 20px;
+      border-radius: 30px;
+      z-index: 10;
+    }
+
+    .input-bottom {
+      position: absolute;
+      top: 10px;
+      width: 580px;
+      height: 80px;
+      border-radius: 20px;
+      background-color: #D9D9D91A;
+      border: none;
+      color: white;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      padding-left: 15px;
+      padding-bottom: 20px;
+      box-sizing: border-box;
+      outline: none;
+
+    }
+
+    .input-bottom:focus {
+      outline: 2px solid #0846FFBF;
+    }
+
+    .input-bottom::placeholder {
+      color: #FFFFFF80;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .signo-mas {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 12px;
+      height: auto;
+    }
+
+    .arrow-input {
+      position: absolute;
+      bottom: 18px;
+      right: 37px;
+      width: 12px;
+      height: auto;
+    }
+
+    .button-arow {
+      position: absolute;
+      bottom: 12px;
+      right: 20px;
+      width: 50px;
+      height: auto;
+    }
+
+
+
+
+
+    @media screen and (max-width: 1000px) {
+
+      /* Estilos para zoom en videos de second-page en móvil */
+      .sp-gif-card {
+        transition: transform 0.3s ease;
+        transform-origin: center center;
+      }
+
+      .sp-gif-card:hover {
+        transform: scale(1.04);
+      }
+
+      .sp-card {
+        overflow: hidden;
+      }
+
+      .shadow {
+        position: fixed;
+        width: 8000px;
+        height: 300px;
+        top: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(1, 1, 0.3, 0) 100%);
+        z-index: 1;
+      }
+
+      .background {
+        padding-left: 7px;
+      }
+
+
+      .header {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        width: 400px;
+        height: auto;
+
+      }
+
+      .logo {
+        position: relative;
+        width: 100px;
+        height: auto;
+        margin-left: -5px;
+        padding: 10px;
+
+      }
+
+      .menus {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 400px;
+        height: auto;
+        padding: 10px;
+        z-index: 100;
+
+      }
+
+      .menus-spacer {
+        width: 400px;
+        height: 140px;
+      }
+
+      /* Contenedor para alinear botones en fila */
+      .buttons-separator-back {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .back-button {
+        position: absolute;
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        margin-top: 54px;
+        left: 14px;
+        border-radius: 100px;
+        background-color: #171F26BF;
+        width: 40px;
+        height: 40px;
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .back-button img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .back-button:hover {
+        transform: scale(1.1);
+      }
+
+      .button-choose-creative {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 370px;
+        height: 40px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+        cursor: pointer;
+        user-select: none;
+        transition: border-radius 0s cubic-bezier(.4, 0, .2, 1), width 0.3s ease;
+        margin-top: 10px;
+        margin-left: 0px;
+      }
+
+      .button-choose-creative.open {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        transition: border-radius 0s cubic-bezier(.4, 0, .2, 1);
+
+      }
+
+      .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #171F26BF;
+        z-index: 10;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+        opacity: 1;
+        max-height: 500px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+      }
+
+      .dropdown-menu[style*="display: none"] {
+        opacity: 0;
+        max-height: 0;
+        pointer-events: none;
+        transition: max-height 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+      }
+
+      .dropdown-item {
+        padding: 10px 20px;
+        font-size: 13px;
+        color: #fff;
+        cursor: pointer;
+        background: none;
+        transition: background 0.2s;
+        margin-top: -10px;
+      }
+
+      .dropdown-item:last-child {
+        border-bottom: none;
+      }
+
+      .arrow.rotated {
+        transform: rotate(90deg);
+      }
+
+      .buttons-container {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        width: 390px;
+        height: auto;
+        padding: 20px;
+        gap: 10px;
+        margin-left: 0px;
+      }
+
+      .button-html-convertor {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 30px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+      }
+
+      .buttons-separator {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: auto;
+        height: 30px;
+        border-radius: 50px;
+        color: white;
+        border: none;
+        font-size: 13px;
+        gap: 5px;
+      }
+
+      .choose-separator {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: auto;
+        height: 30px;
+        border-radius: 50px;
+        color: white;
+        border: none;
+        font-size: 13px;
+        gap: 5px;
+      }
+
+
+      .button-video-editing {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 165px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+      }
+
+      .button-ugc-video {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+      }
+
+      .button-ai-ugc-video {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+        font-family: 'Mont', sans-serif;
+      }
+
+      .title {
+        position: relative;
+        width: 400px;
+        height: auto;
+        padding-left: 5px;
+        padding-top: 10px;
+        color: white;
+        font-size: 18px;
+      }
+
+      .cards {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        width: 400px;
+        height: auto;
+        padding-bottom: 0px;
+
+      }
+
+      .current-templete {
+        position: relative;
+        height: auto;
+        color: white;
+        font-size: 25px;
+        padding-left: 5px;
+        margin-top: -10px;
+        width: 400px;
+      }
+
+      .container-cards-1 {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: start;
+        column-gap: 30px;
+        width: 400px;
+        height: auto;
+        margin-top: -10px;
+        margin-left: -25px;
+
+      }
+
+      .container-cards {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        width: 400px;
+        height: auto;
+        margin-top: -10px;
+        margin-left: -25px;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 180px;
+        height: 320px;
+        background-color: #171F26BF;
+        border-radius: 20px;
+        padding-top: 25px;
+      }
+
+      .text-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        width: 220px;
+        height: auto;
+      }
+
+      .title-card {
+        position: absolute;
+        color: white;
+        font-size: 13px;
+        margin-top: 50px;
+        margin-left: 30px;
+      }
+
+      .subtitle-card {
+        position: absolute;
+        color: white;
+        font-size: 9px;
+        margin-top: 70px;
+        margin-left: 30px;
+      }
+
+      .gif-card {
+        position: relative;
+        width: 160px;
+        height: auto;
+        border-radius: 20px;
+        margin-top: -60px;
+      }
+
+      .container-templetes-title {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        width: 400px;
+        height: auto;
+        padding-left: 30px;
+        gap: 20px;
+      }
+
+      .arrow {
+        position: absolute;
+        right: 15px;
+        width: 10px;
+        height: auto;
+      }
+
+      .card-fixed {
+        width: 420px;
+        height: 130px;
+        margin-left: -8px;
+
+      }
+
+      .input-bottom {
+        width: 390px;
+        height: 70px;
+
+
+      }
+
+    }
+
+    @media screen and (max-width: 400px) {
+
+      .shadow {
+        position: fixed;
+        width: 8000px;
+        height: 200px;
+        top: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(1, 1, 0.3, 0) 100%);
+        z-index: 1;
+      }
+
+      .logo {
+        margin-left: -10px;
+      }
+
+
+      .background {
+        padding-left: 60px;
+      }
+
+      .title {
+        padding-left: 20px;
+        margin-top: -5px;
+      }
+
+      .menus-spacer {
+        width: 400px;
+        height: 200px;
+      }
+
+
+      .current-templete {
+        position: relative;
+        height: auto;
+        color: white;
+        font-size: 26px;
+        padding-left: 20px;
+        margin-top: -5px;
+        width: 400px;
+      }
+
+      .container-cards-1 {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        columns: 2;
+        column-gap: 40px;
+        width: 400px;
+        height: auto;
+        margin-top: -10px;
+        margin-left: -20px;
+      }
+
+      .container-cards {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        width: 400px;
+        height: auto;
+        margin-top: -10px;
+        margin-left: -20px;
+      }
+
+      /* Contenedor para alinear botones en fila */
+      .buttons-separator-back {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button-choose-creative {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 382px;
+        height: 40px;
+        border-radius: 50px;
+        background-color: #171F26BF;
+        color: white;
+        border: none;
+        font-size: 13px;
+        cursor: pointer;
+        user-select: none;
+        transition: border-radius 0s cubic-bezier(.4, 0, .2, 1);
+        padding-left: 20px
+      }
+
+
+      .buttons-container {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        width: 402px;
+        height: auto;
+        gap: 10px;
+        margin-left: 0px;
+      }
+
+      .card-fixed {
+        margin-left: 0px;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body class="background">
+
+  <div class="first-page">
+
+
+    <!-- <div class="shadow">
+
+    </div> -->
+
+    <div class="menus">
+
+      <div class="header">
+
+        <img class="logo" src="./assets/LOGO.png" alt="Logo">
+
+      </div>
+
+      <div class="button-choose-creative-wrapper">
+
+        <div class="button-choose-creative" type="menu">
+          Choose creative type
+          <img class="arrow" src="./assets/ARROW.svg" alt="Arrow">
+        </div>
+
+
+        <div class="dropdown-menu" style="display: none;">
+          <br />
+
+          <div class="dropdown-item">Axon Interactives</div>
+          <div class="dropdown-item">Video Editing</div>
+          <div class="dropdown-item">UGC Videos</div>
+        </div>
+      </div>
+
+      <div class="buttons-container">
+
+        <div class="buttons-separator">
+
+          <button class="button-html-convertor active" type="menu">Image/Video convert to HTML</button>
+
+          <button class="button-video-editing" type="menu">Interactives</button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="menus-spacer"></div>
+
+    <div class="card-fixed">
+
+      <input class="input-bottom" placeholder="Type your descripion here..." type="text">
+      <img class="signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
+      <img class="button-arow" src="./assets/TEST.svg" alt="Arrow">
+      <img class="arrow-input" src="./assets/ARROW.svg" alt="Arrow">
+
+    </div>
+
+
+
+
+
+    <div id="axon-interactives" class="cards">
+
+      <p class="title">
+
+        Templates
+
+      </p>
+
+
+      <p id="convert-to-html" class="current-templete">
+
+        Image/Video convert to HTML
+
+      </p>
+
+
+      <div class="container-cards-1">
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image1.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Image convert to HTML
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image10.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Video convert to HTML
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <br />
+
+      <p id="interactives" class="current-templete">
+
+        Interactives
+
+      </p>
+
+      <br />
+
+
+
+
+      <div class="container-cards">
+
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image15.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Infographic
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image11.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Carousel
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image6.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Review
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image7.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Notes
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image3.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Pop
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image4.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Rotate
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image14.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Float
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image2.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              1-2-3 Steps
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image12.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Stream
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image13.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Falling
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image5.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Before After
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image8.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Grid
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image9.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Gamified Quiz
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <img class="gif-card" src="./assets/image16.gif" alt="">
+
+          <div class="text-container">
+
+            <p class="title-card">
+              Gamified Product Page
+            </p>
+
+            <p class="subtitle-card">
+              Secondary text
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+
+  </div>
+
+  <div class="shadow">
+
+  </div>
+
+  <div class="second-page">
+
+
+    <div class="sp-shadow">
+
+    </div>
+
+
+    <div class="sp-menus">
+
+      <div class="sp-header">
+
+        <img class="sp-logo" src="./assets/LOGO.png" alt="Logo">
+
+      </div>
+
+      <div class="button-choose-creative-wrapper">
+
+        <div class="buttons-separator-back">
+
+          <div class="sp-button-back" type="menu">
+            <img class="sp-arrow-back" src="./assets/BACK.svg" alt="Arrow">
+          </div>
+
+          <div class="sp-button-choose-creative" type="menu">
+            Choose creative type
+            <img class="sp-arrow" src="./assets/ARROW.svg" alt="Arrow">
+          </div>
+
+        </div>
+
+
+        <div class="sp-dropdown-menu" style="display: none;">
+          <br />
+
+          <div class="sp-dropdown-item">Axon Interactives</div>
+          <div class="sp-dropdown-item">Video Editing</div>
+          <div class="sp-dropdown-item">UGC Videos</div>
+        </div>
+      </div>
+
+      <div class="sp-buttons-container">
+
+        <button class="sp-button-html-convertor sp-active" type="menu">15s static video templates</button>
+
+
+        <div class="sp-buttons-separator">
+
+          <button class="sp-button-video-editing" type="menu">59s video templates</button>
+
+          <button class="sp-button-ugc-video" type="menu">UGC</button>
+
+          <button class="sp-button-ai-ugc-video" type="menu">AI UGC</button>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="sp-card-fixed">
+
+      <input class="sp-input-bottom" placeholder="Type your descripion here..." type="text">
+      <img class="sp-signo-mas" src="./assets/SIGNO MAS.svg" alt="Arrow">
+      <img class="sp-button-arow" src="./assets/TEST.svg" alt="Arrow">
+      <img class="sp-arrow-input" src="./assets/ARROW.svg" alt="Arrow">
+
+    </div>
+
+    <div class="sp-menus-spacer"></div>
+
+
+
+
+
+
+
+    <div class="sp-container-cards">
+
+      <p class="sp-title">
+
+        Templates
+
+      </p>
+
+      <p id="15s" class="sp-current-templete">
+
+        15s static video templates
+
+      </p>
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-01.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> no animation, no music </p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-02.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> no animation, no music </p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-03.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> with animation, no music </p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-04.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card"> 15s static video </p>
+          <p class="sp-subtitle-card"> with animation, and music </p>
+        </div>
+      </div>
+
+    </div>
+
+    <br />
+    <p id="59s" class="sp-current-templete">
+
+      59s video templates
+
+    </p>
+
+    <br />
+
+    <div class="sp-container-cards">
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-01.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">59s image mash up</p>
+          <p class="sp-subtitle-card">transition and animation</p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-02.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">59s video and image</p>
+          <p class="sp-subtitle-card">mashup</p>
+        </div>
+      </div>
+
+    </div>
+
+    <br />
+    <p id="video-editing" class="sp-current-templete">
+
+      Video Editing
+
+    </p>
+
+    <br />
+
+    <div class="sp-container-cards">
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-01.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Adding subtitles/</p>
+          <p class="sp-subtitle-card">captions</p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-02.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Adding </p>
+          <p class="sp-subtitle-card">disclaimer</p>
+        </div>
+      </div>
+
+    </div>
+
+    <br />
+    <p id="ugc" class="sp-current-templete">
+
+      UGC
+
+    </p>
+
+    <br />
+
+    <div class="sp-container-cards">
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-01.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product</p>
+          <p class="sp-subtitle-card">review</p>
+        </div>
+      </div>
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-02.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">Tryon</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <br />
+    <p id="ai-ugc" class="sp-current-templete">
+
+      AI UGC
+
+    </p>
+
+    <br />
+
+    <div class="sp-container-cards">
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-01.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">AI</p>
+          <p class="sp-subtitle-card">Intro</p>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-02.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">Try on</p>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-03.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product</p>
+          <p class="sp-subtitle-card">review</p>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-04.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Product </p>
+          <p class="sp-subtitle-card">showcasing</p>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-05.mp4" preload="none" alt="">
+        </video>
+        <div class="sp-text-container">
+          <p class="sp-title-card">Street </p>
+          <p class="sp-subtitle-card">Interview</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+  </div>
+
+  <script>
+
+    // Video cache para lazy loading y carga rápida
+    const videoCache = new Map();
+    let videosLoaded = false;
+
+    // Función para precargar y cachear videos
+    function preloadVideos() {
+      if (videosLoaded) return;
+
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('video[data-src]');
+
+      videos.forEach((video, index) => {
+        const src = video.getAttribute('data-src');
+
+        // Verificar si el video ya está en caché
+        if (videoCache.has(src)) {
+          video.src = src;
+          video.load();
+          return;
+        }
+
+        // Cargar video con un pequeño delay para no sobrecargar
+        setTimeout(() => {
+          // Crear un objeto de video temporal para cachear
+          const tempVideo = document.createElement('video');
+          tempVideo.preload = 'auto';
+          tempVideo.src = src;
+
+          tempVideo.addEventListener('loadeddata', () => {
+            videoCache.set(src, true);
+            video.src = src;
+            video.load();
+
+            // Intentar reproducir el video
+            video.play().catch(err => {
+              // Ignorar errores de autoplay
+              console.log('Autoplay prevented for:', src);
+            });
+          });
+
+          tempVideo.load();
+        }, index * 100); // Delay escalonado para evitar sobrecarga
+      });
+
+      videosLoaded = true;
+    }
+
+    // Función para pausar videos cuando se sale de la segunda página
+    function pauseSecondPageVideos() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+      });
+    }
+
+    // Función para reproducir videos cuando se entra a la segunda página
+    function playSecondPageVideos() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('video');
+      videos.forEach(video => {
+        if (video.src) {
+          video.play().catch(err => {
+            console.log('Autoplay prevented');
+          });
+        }
+      });
+    }
+
+    // Función para configurar eventos de hover/touch en videos
+    function setupVideoInteractions() {
+      const secondPage = document.querySelector('.second-page');
+      if (!secondPage) return;
+
+      const videos = secondPage.querySelectorAll('.sp-gif-card');
+
+      videos.forEach(video => {
+        // Evento para mouse hover (desktop)
+        video.addEventListener('mouseenter', function () {
+          this.muted = false;
+          this.volume = 1.0;
+        });
+
+        video.addEventListener('mouseleave', function () {
+          this.muted = true;
+        });
+
+        // Eventos para touch (mobile/tablet)
+        video.addEventListener('touchstart', function (e) {
+          // Prevenir el comportamiento por defecto solo si es necesario
+          this.muted = false;
+          this.volume = 1.0;
+        });
+
+        video.addEventListener('touchend', function (e) {
+          this.muted = true;
+        });
+
+        // Evento para cuando el touch se cancela (por ejemplo, al hacer scroll)
+        video.addEventListener('touchcancel', function (e) {
+          this.muted = true;
+        });
+      });
+    }
+
+    // Dropdown logic for .button-choose-creative-wrapper
+    const wrappers = document.querySelectorAll('.button-choose-creative-wrapper');
+
+    wrappers.forEach(wrapper => {
+      const button = wrapper.querySelector('.button-choose-creative, .sp-button-choose-creative');
+      const dropdown = wrapper.querySelector('.dropdown-menu, .sp-dropdown-menu');
+      const arrow = wrapper.querySelector('.arrow, .sp-arrow');
+
+      function openDropdown() {
+        dropdown.style.display = 'block';
+        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+        dropdown.style.opacity = '1';
+        arrow.classList.add('rotated', 'sp-rotated');
+        button.classList.add('open', 'sp-open');
+      }
+
+      function closeDropdown() {
+        dropdown.style.maxHeight = '0';
+        dropdown.style.opacity = '0';
+        arrow.classList.remove('rotated', 'sp-rotated');
+        button.classList.remove('open', 'sp-open');
+        setTimeout(() => {
+          dropdown.style.display = 'none';
+        }, 350);
+      }
+
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = dropdown.style.display === 'block';
+        if (isOpen) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrapper.contains(e.target) && dropdown.style.display === 'block') {
+          closeDropdown();
+        }
+      });
+    });
+
+    // Button selection logic for .buttons-container and .sp-buttons-container
+    const buttonsContainers = document.querySelectorAll('.buttons-container, .sp-buttons-container');
+
+    buttonsContainers.forEach(buttonsContainer => {
+      const buttons = buttonsContainer.querySelectorAll('button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all buttons in this container
+          buttons.forEach(btn => {
+            btn.classList.remove('active', 'sp-active');
+          });
+          // Add active class to clicked button
+          this.classList.add('active', 'sp-active');
+        });
+      });
+    });
+
+    // Navegación entre páginas
+    function navigateToSecondPage() {
+      const firstPage = document.querySelector('.first-page');
+      const secondPage = document.querySelector('.second-page');
+      const backButton = document.querySelector('.back-button');
+
+      if (firstPage && secondPage) {
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Fade out first-page
+        firstPage.classList.add('hidden');
+
+        // Después del fade out, cambiar páginas
+        setTimeout(() => {
+          // Ocultar first-page completamente
+          firstPage.style.display = 'none';
+
+          // Resetear animaciones de second-page removiendo y re-agregando la clase
+          secondPage.classList.remove('visible');
+
+          // Mostrar second-page
+          secondPage.style.display = 'block';
+
+          // Forzar reflow para resetear animaciones
+          void secondPage.offsetWidth;
+
+          // Agregar clase visible para iniciar animaciones
+          secondPage.classList.add('visible');
+
+          // Mostrar botón de regresar
+          if (backButton) {
+            backButton.style.display = 'flex';
+          }
+
+          // Cargar videos con lazy loading
+          preloadVideos();
+
+          // Reproducir videos después de un pequeño delay
+          setTimeout(() => {
+            playSecondPageVideos();
+            // Configurar interacciones de hover/touch en videos
+            setupVideoInteractions();
+          }, 200);
+        }, 500); // Duración del fade out
+      }
+    }
+
+    function navigateToFirstPage() {
+      const firstPage = document.querySelector('.first-page');
+      const secondPage = document.querySelector('.second-page');
+      const backButton = document.querySelector('.back-button');
+
+      if (firstPage && secondPage) {
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Pausar videos de la segunda página
+        pauseSecondPageVideos();
+
+        // Fade out second-page
+        secondPage.classList.remove('visible');
+
+        // Ocultar botón de regresar
+        if (backButton) {
+          backButton.style.display = 'none';
+        }
+
+        // Después del fade out, cambiar páginas
+        setTimeout(() => {
+          // Ocultar second-page completamente
+          secondPage.style.display = 'none';
+
+          // Mostrar first-page
+          firstPage.style.display = 'block';
+          // Forzar reflow para que la transición funcione
+          firstPage.offsetHeight;
+          firstPage.classList.remove('hidden');
+        }, 500); // Duración del fade out
+      }
+    }
+
+    // Event listeners para las cards de first-page removidos
+    // Las cards ya no navegan a la segunda página
+
+    // Agregar event listener al botón de regresar sp-button-back
+    const spBackButton = document.querySelector('.sp-button-back');
+    if (spBackButton) {
+      spBackButton.addEventListener('click', function () {
+        navigateToFirstPage();
+      });
+    }
+
+    // Scroll functionality for button-html-convertor and button-video-editing
+    const htmlConvertorButtons = document.querySelectorAll('.button-html-convertor');
+    const videoEditingButtons = document.querySelectorAll('.button-video-editing');
+
+    htmlConvertorButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const targetElement = document.getElementById('convert-to-html');
+        if (targetElement) {
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 300;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+
+    videoEditingButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const targetElement = document.getElementById('interactives');
+        if (targetElement) {
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 300;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll functionality for second-page buttons
+    const secondPage = document.querySelector('.second-page');
+    if (secondPage) {
+      const secondPageHtmlButtons = secondPage.querySelectorAll('.sp-button-html-convertor');
+      const secondPageVideoButtons = secondPage.querySelectorAll('.sp-button-video-editing');
+      const secondPageUgcButtons = secondPage.querySelectorAll('.sp-button-ugc-video');
+      const secondPageAiUgcButtons = secondPage.querySelectorAll('.sp-button-ai-ugc-video');
+
+      secondPageHtmlButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const targetElement = document.getElementById('15s');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+
+      secondPageVideoButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const targetElement = document.getElementById('59s');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+
+      secondPageUgcButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const targetElement = document.getElementById('ugc');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+
+      secondPageAiUgcButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const targetElement = document.getElementById('ai-ugc');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+    }
+
+    // Funcionalidad para el botón "Axon Interactives" del dropdown en first-page
+    const firstPageDropdownItems = document.querySelectorAll('.first-page .dropdown-item');
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Axon Interactives') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('interactives');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Axon Interactives" del dropdown en second-page
+    const secondPageDropdownItems = document.querySelectorAll('.second-page .sp-dropdown-item');
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Axon Interactives') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la primera página
+          navigateToFirstPage();
+
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('interactives');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 300;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Video Editing" del dropdown en first-page
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Video Editing') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la segunda página
+          navigateToSecondPage();
+
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('15s');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 400;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "Video Editing" del dropdown en second-page
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'Video Editing') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('15s');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "UGC Videos" del dropdown en first-page
+    firstPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'UGC Videos') {
+        item.addEventListener('click', function () {
+          // Primero navegar a la segunda página
+          navigateToSecondPage();
+
+          // Después de que termine la animación de navegación, hacer scroll
+          setTimeout(() => {
+            const targetElement = document.getElementById('ugc');
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - 300;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 600); // Esperar un poco más que la duración del fade out (500ms)
+        });
+      }
+    });
+
+    // Funcionalidad para el botón "UGC Videos" del dropdown en second-page
+    secondPageDropdownItems.forEach(item => {
+      if (item.textContent.trim() === 'UGC Videos') {
+        item.addEventListener('click', function () {
+          const targetElement = document.getElementById('ugc');
+          if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 300;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+
+
+  </script>
+
+
+
+</body>
+
+</html>

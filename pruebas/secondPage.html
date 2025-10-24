@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("./assets/BACKGROUND.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-color: black;
+    }
+
+    @font-face {
+      font-family: 'Mont';
+      src: url("./fonts/Mont-Light.otf");
+    }
+
+    .second-page {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .sp-cards-container {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      top: 0;
+      left: 460px;
+      right: 20px;
+      bottom: 0;
+      border-radius: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+
+    .sp-container-cards {
+      position: relative;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      flex-wrap: wrap;
+      column-gap: 60px;
+      height: auto;
+      padding-left: 30px;
+      padding-top: 17px;
+    }
+
+    .sp-title {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      color: white;
+      font-size: 28px;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .sp-cards {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      padding-bottom: 150px;
+    }
+
+    .sp-current-templete {
+      position: relative;
+      height: auto;
+      color: white;
+      font-size: 38px;
+      width: 100%;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .sp-current-templete-2 {
+      position: relative;
+      height: auto;
+      color: white;
+      font-size: 38px;
+      width: 100%;
+      font-family: 'Mont', sans-serif;
+      padding-left: 30px;
+
+    }
+
+    .sp-card {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 280px;
+      height: 480px;
+      background-color: #171F26BF;
+      border-radius: 30px;
+      padding-top: 25px;
+      margin-bottom: 30px;
+    }
+
+    .sp-text-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      width: 220px;
+      height: auto;
+    }
+
+    .sp-title-card {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      margin-top: 55px;
+      margin-left: -10px;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .sp-subtitle-card {
+      position: absolute;
+      color: white;
+      font-size: 13px;
+      margin-top: 90px;
+      margin-left: -10px;
+      font-family: 'Mont', sans-serif;
+
+    }
+
+    .sp-gif-card {
+      position: relative;
+      width: 240px;
+      height: auto;
+      border-radius: 20px;
+      margin-top: -60px;
+      cursor: pointer;
+    }
+
+
+    .sp-menu {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      top: 90px;
+      left: 20px;
+      width: 420px;
+      min-width: 420px;
+      height: 730px;
+      background-color: #171F26BF;
+      border-radius: 20px;
+      padding: 25px 20px;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    .sp-logo {
+      position: fixed;
+      top: 30px;
+      left: 20px;
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+      padding-right: 250px;
+    }
+
+    .sp-menu h3 {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      margin-top: 13px;
+      font-family: 'Mont', sans-serif;
+    }
+
+    .sp-creative-type {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      margin-top: 3px;
+      font-family: 'Mont', sans-serif;
+    }
+
+    .sp-interactives:hover {
+      background-color: #343d4d;
+    }
+
+    .sp-interactives.active,
+    .sp-interactives:active {
+      background-color: #0066ff;
+    }
+
+    .sp-creative-options {
+      display: flex;
+      gap: 3px;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .sp-creative-option {
+      background-color: #171F26BF;
+      color: white;
+      padding: 8px 13.5px;
+      border-radius: 20px;
+      font-family: 'Mont', sans-serif;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .sp-creative-option:hover {
+      background-color: #343d4d;
+    }
+
+    .sp-creative-option.active,
+    .sp-creative-option:active {
+      background-color: #0066ff;
+    }
+
+    .sp-btn-primary {
+      background-color: #171F26BF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      width: 355px;
+      transition: all 0.2s;
+    }
+
+    .sp-btn-primary:hover {
+      background-color: #343d4d;
+    }
+
+    .sp-btn-primary.active,
+    .sp-btn-primary:active {
+      background-color: #0066ff;
+    }
+
+
+    .sp-btn-secondary {
+      background-color: #171F26BF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      width: 305px;
+      transition: all 0.2s;
+    }
+
+    .sp-interactives {
+      background-color: #171F26BF;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-size: 15px;
+      font-weight: 400;
+      border: none;
+      cursor: pointer;
+      margin: 1px;
+      font-family: 'Mont', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .sp-btn-secondary:hover {
+      background-color: #343d4d;
+    }
+
+    .sp-btn-secondary.active,
+    .sp-btn-secondary:active {
+      background-color: #0066ff;
+    }
+
+    .sp-tabs {
+      display: flex;
+      gap: 3px;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .sp-tab {
+      background-color: #171F26BF;
+      color: white;
+      padding: 6px 32px;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 20px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sp-tab-2 {
+      background-color: #171F26BF;
+      color: white;
+      padding: 6px 17px;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 20px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sp-tab:hover,
+    .sp-tab-2:hover {
+      background-color: #343d4d;
+    }
+
+    .sp-tab.active,
+    .sp-tab:active,
+    .sp-tab-2.active,
+    .sp-tab-2:active {
+      background-color: #0066ff;
+    }
+
+    .sp-description-area {
+      width: 100%;
+      background-color: #171F26FA;
+      border-radius: 22px;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .sp-description-area textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #6b7280;
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      resize: none;
+      outline: none;
+      min-height: 80px;
+    }
+
+    .sp-description-area textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .sp-description-bg {
+      width: 100%;
+      background-color: #D9D9D91A;
+      border-radius: 22px;
+      padding: 15px;
+      box-sizing: border-box;
+      min-height: 140px;
+      position: relative;
+    }
+
+    .sp-description-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .sp-icon-btn {
+      background: none;
+      border: none;
+      color: #6b7280;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 3px;
+      transition: all 0.2s;
+    }
+
+    .sp-icon-btn img {
+      width: 13px;
+      height: 13px;
+    }
+
+    .sp-icon-btn:hover {
+      color: #a0a8b1;
+    }
+
+    .sp-priority-section {
+      width: 350px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #171F26FA;
+      padding: 15px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sp-priority-section.open {
+      border-radius: 20px 20px 0 0;
+    }
+
+    .sp-priority-section span {
+      color: white;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+    }
+
+    .sp-priority-section img {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sp-priority-section.open img {
+      transform: rotate(90deg);
+    }
+
+    .sp-submit-btn {
+      background-color: #0066ff;
+      color: white;
+      padding: 12px 40px;
+      border-radius: 50px;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      align-self: flex-end;
+      margin-top: 1px;
+      min-width: 150px;
+      transition: all 0.2s;
+    }
+
+    .sp-submit-btn:hover {
+      background-color: #0052cc;
+    }
+
+    .sp-priority-dropdown {
+      width: 380px;
+      background-color: #171F26FA;
+      border-radius: 0 0 20px 20px;
+      margin-top: -12px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(-10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sp-priority-dropdown.open {
+      opacity: 1;
+      max-height: 200px;
+      transform: translateY(0);
+    }
+
+    .sp-priority-option {
+      padding: 6px 15px;
+      color: white;
+      font-family: 'Mont', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+
+    .sp-priority-dropdown.open .sp-priority-option {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sp-priority-dropdown.open .sp-priority-option:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    .sp-priority-dropdown.open .sp-priority-option:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .sp-priority-dropdown.open .sp-priority-option:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .sp-priority-dropdown.open .sp-priority-option:nth-child(4) {
+      transition-delay: 0.25s;
+    }
+
+    .sp-priority-option:last-child {
+      border-bottom: none;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .sp-priority-option:first-child {
+      border-radius: 0;
+    }
+
+    .sp-priority-option:hover {
+      background-color: #343d4d;
+      transform: translateY(0) scale(1.02);
+    }
+
+    .sp-priority-option.selected {
+      background-color: #0066ff;
+      transform: translateY(0) scale(1.02);
+    }
+
+    .sp-menu.expanded {
+      height: auto;
+      min-height: 780px;
+    }
+
+    .sp-play-icon {
+      position: absolute;
+      top: 84%;
+      left: 40px;
+      width: 35px;
+      height: 35px;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+
+    .sp-pause-icon {
+      position: absolute;
+      top: 84%;
+      left: 40px;
+      width: 25px;
+      height: 25px;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+
+    .sp-sound-icon {
+      position: absolute;
+      top: 84%;
+      right: 15px;
+      width: 25px;
+      height: 25px;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="second-page">
+
+    <div class="sp-navegation">
+
+      <img class="sp-logo" src="./assets/LOGO.png" alt="Logo">
+
+      <div class="sp-menu">
+
+        <!-- Creative Type Section -->
+        <p class="sp-creative-type">Creative type</p>
+        <div class="sp-creative-options">
+          <button class="sp-creative-option">End Card (SIP)</button>
+          <button class="sp-creative-option">Playable (MIP)</button>
+          <button class="sp-creative-option">MERC</button>
+        </div>
+
+        <button class="sp-btn-primary">Launch Set: End Card & MERC</button>
+
+        <!-- Tabs -->
+        <div class="sp-tabs">
+          <button class="sp-tab">Video</button>
+          <button class="sp-tab-2">Image/Banners</button>
+        </div>
+
+        <!-- Template Section -->
+        <h3 class="sp-template">Template</h3>
+        <button class="sp-btn-secondary">15s static video templates</button>
+
+        <!-- Interactives Section -->
+        <div class="sp-buttons-sepatator">
+          <button class="sp-interactives">59s video templates</button>
+          <button class="sp-interactives">Video Editing</button>
+          <button class="sp-interactives">UGC</button>
+          <button class="sp-interactives">AI UGC</button>
+
+        </div>
+        <div class="sp-description-area">
+          <div class="sp-description-bg">
+            <textarea placeholder="Type your description here..."></textarea>
+          </div>
+          <div class="sp-description-icons">
+            <button class="sp-icon-btn"><img src="./assets/PLUS.svg" alt=""></button>
+            <button class="sp-icon-btn"><img src="./assets/LINK.svg" alt=""></button>
+          </div>
+        </div>
+
+        <!-- Priority Section -->
+        <div class="sp-priority-section" id="priority-section">
+          <span id="sp-priority-text">Priority</span>
+          <img src="./assets/ARROW.svg" alt="">
+        </div>
+        <div class="sp-priority-dropdown" id="priority-dropdown">
+          <div class="sp-priority-option" data-value="firedrill">Firedrill (done asap)</div>
+          <div class="sp-priority-option" data-value="p1">P1 - High</div>
+          <div class="sp-priority-option" data-value="p2">P2 - Medium</div>
+          <div class="sp-priority-option" data-value="p3">P3 - Low</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="sp-submit-btn">Submit</button>
+
+      </div>
+
+    </div>
+
+    <div class="sp-cards-container">
+
+      <div class="sp-container-cards">
+
+        <p class="sp-title">
+
+          Templates
+
+        </p>
+
+        <p id="15s" class="sp-current-templete">
+
+          15s static video templates
+
+        </p>
+
+        <div class="sp-card">
+
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-01.mp4" preload="none" alt="">
+
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card"> 15s static video </p>
+            <p class="sp-subtitle-card"> no animation, no music </p>
+
+
+          </div>
+        </div>
+        <div class="sp-card">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-02.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card"> 15s static video </p>
+            <p class="sp-subtitle-card"> no animation, with music </p>
+          </div>
+        </div>
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-03.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card"> 15s static video </p>
+            <p class="sp-subtitle-card"> with animation, no music </p>
+          </div>
+        </div>
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/15s-video-04.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card"> 15s static video </p>
+            <p class="sp-subtitle-card"> with animation, and music </p>
+          </div>
+        </div>
+
+      </div>
+
+      <br />
+      <p id="59s" class="sp-current-templete-2">
+
+        59s video templates
+
+      </p>
+
+      <br />
+
+      <div class="sp-container-cards">
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-01.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">59s image mash up</p>
+            <p class="sp-subtitle-card">transition and animation</p>
+          </div>
+        </div>
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/59s-video-02.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">59s video and image</p>
+            <p class="sp-subtitle-card">mashup</p>
+          </div>
+        </div>
+
+      </div>
+
+      <br />
+      <p id="video-editing" class="sp-current-templete-2">
+
+        Video Editing
+
+      </p>
+
+      <br />
+
+      <div class="sp-container-cards">
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-01.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Adding subtitles/</p>
+            <p class="sp-subtitle-card">captions</p>
+          </div>
+        </div>
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/vid-edit-02.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Adding </p>
+            <p class="sp-subtitle-card">disclaimer</p>
+          </div>
+        </div>
+
+      </div>
+
+      <br />
+      <p id="ugc" class="sp-current-templete-2">
+
+        UGC
+
+      </p>
+
+      <br />
+
+      <div class="sp-container-cards">
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-01.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Product</p>
+            <p class="sp-subtitle-card">review</p>
+          </div>
+        </div>
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ugc-02.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Product </p>
+            <p class="sp-subtitle-card">Tryon</p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <br />
+      <p id="ai-ugc" class="sp-current-templete-2">
+
+        AI UGC
+
+      </p>
+
+      <br />
+
+      <div class="sp-container-cards">
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-01.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">AI</p>
+            <p class="sp-subtitle-card">Intro</p>
+          </div>
+        </div>
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-02.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Product </p>
+            <p class="sp-subtitle-card">Try on</p>
+          </div>
+        </div>
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-03.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Product</p>
+            <p class="sp-subtitle-card">review</p>
+          </div>
+        </div>
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-04.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Product </p>
+            <p class="sp-subtitle-card">showcasing</p>
+          </div>
+        </div>
+
+        <div class="sp-card">
+          <img class="sp-play-icon" src="./assets/PLAY.svg" alt="">
+          <img class="sp-sound-icon" src="./assets/SOUND.svg" alt="">
+
+          <video autoplay muted loop class="sp-gif-card" data-src="./assets/ai-ugc-05.mp4" preload="none" alt="">
+          </video>
+          <div class="sp-text-container">
+            <p class="sp-title-card">Street </p>
+            <p class="sp-subtitle-card">Interview</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+
+
+
+
+  </div>
+
+  </div>
+
+  <script>
+    // Get all button groups
+    const creativeOptions = document.querySelectorAll('.sp-creative-option');
+    const tabs = document.querySelectorAll('.sp-tab, .sp-tab-2');
+    const primaryButtons = document.querySelectorAll('.sp-btn-primary');
+    const secondaryButtons = document.querySelectorAll('.sp-btn-secondary');
+    const interactivesButtons = document.querySelectorAll('.sp-interactives');
+
+    // Function to deactivate all buttons
+    function deactivateAllButtons() {
+      creativeOptions.forEach(btn => btn.classList.remove('active'));
+      tabs.forEach(btn => btn.classList.remove('active'));
+      primaryButtons.forEach(btn => btn.classList.remove('active'));
+      secondaryButtons.forEach(btn => btn.classList.remove('active'));
+      interactivesButtons.forEach(btn => btn.classList.remove('active'));
+    }
+
+    // Creative Options buttons
+    creativeOptions.forEach(button => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        } else {
+          deactivateAllButtons();
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Tab buttons
+    tabs.forEach(button => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        } else {
+          deactivateAllButtons();
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Primary buttons
+    primaryButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        } else {
+          deactivateAllButtons();
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Secondary buttons
+    secondaryButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        } else {
+          deactivateAllButtons();
+          this.classList.add('active');
+        }
+
+        // Scroll functionality
+        const buttonText = this.textContent.trim();
+        let targetId = '';
+
+        if (buttonText === '15s static video templates') {
+          targetId = '15s';
+        }
+
+        if (targetId) {
+          const targetElement = document.getElementById(targetId);
+          const cardsContainer = document.querySelector('.sp-cards-container');
+
+          if (targetElement && cardsContainer) {
+            const elementPosition = targetElement.offsetTop;
+            const offsetPosition = elementPosition - 300;
+
+            cardsContainer.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Interactives buttons
+    interactivesButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        } else {
+          deactivateAllButtons();
+          this.classList.add('active');
+        }
+
+        // Scroll functionality
+        const buttonText = this.textContent.trim();
+        let targetId = '';
+
+        if (buttonText === '59s video templates') {
+          targetId = '59s';
+        } else if (buttonText === 'Video Editing') {
+          targetId = 'video-editing';
+        } else if (buttonText === 'UGC') {
+          targetId = 'ugc';
+        } else if (buttonText === 'AI UGC') {
+          targetId = 'ai-ugc';
+        }
+
+        if (targetId) {
+          const targetElement = document.getElementById(targetId);
+          const cardsContainer = document.querySelector('.sp-cards-container');
+
+          if (targetElement && cardsContainer) {
+            const elementPosition = targetElement.offsetTop;
+            const offsetPosition = elementPosition - 300;
+
+            cardsContainer.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Lazy loading para videos usando Intersection Observer
+    document.addEventListener('DOMContentLoaded', function () {
+      const videos = document.querySelectorAll('video[data-src]');
+
+      const videoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            const source = video.getAttribute('data-src');
+
+            if (source) {
+              video.src = source;
+              video.load();
+              video.play().catch(err => console.log('Video play error:', err));
+              video.removeAttribute('data-src');
+              observer.unobserve(video);
+            }
+          }
+        });
+      }, {
+        rootMargin: '50px' // Cargar videos 50px antes de que sean visibles
+      });
+
+      videos.forEach(video => {
+        videoObserver.observe(video);
+      });
+    });
+
+    // Priority dropdown functionality
+    const prioritySection = document.getElementById('sp-priority-section');
+    const priorityDropdown = document.getElementById('sp-priority-dropdown');
+    const priorityText = document.getElementById('sp-priority-text');
+    const menu = document.querySelector('.sp-menu');
+    let isDropdownOpen = false;
+
+    prioritySection.addEventListener('click', function () {
+      isDropdownOpen = !isDropdownOpen;
+
+      if (isDropdownOpen) {
+        prioritySection.classList.add('open');
+        priorityDropdown.classList.add('open');
+        menu.classList.add('expanded');
+      } else {
+        prioritySection.classList.remove('open');
+        priorityDropdown.classList.remove('open');
+        menu.classList.remove('expanded');
+      }
+    });
+
+    // Handle priority option selection
+    const priorityOptions = document.querySelectorAll('.sp-priority-option');
+    priorityOptions.forEach(option => {
+      option.addEventListener('click', function (e) {
+        e.stopPropagation();
+
+        // Remove selected class from all options
+        priorityOptions.forEach(opt => opt.classList.remove('selected'));
+
+        // Add selected class to clicked option
+        this.classList.add('selected');
+
+        // Update the priority text
+        priorityText.textContent = this.textContent;
+
+        // Close dropdown
+        isDropdownOpen = false;
+        prioritySection.classList.remove('open');
+        priorityDropdown.classList.remove('open');
+        menu.classList.remove('expanded');
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!prioritySection.contains(e.target) && !priorityDropdown.contains(e.target)) {
+        if (isDropdownOpen) {
+          isDropdownOpen = false;
+          prioritySection.classList.remove('open');
+          priorityDropdown.classList.remove('open');
+          menu.classList.remove('expanded');
+        }
+      }
+    });
+
+    // Play/Pause icon functionality
+    const playIcons = document.querySelectorAll('.sp-play-icon');
+
+    playIcons.forEach(playIcon => {
+      playIcon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const card = this.closest('.sp-card');
+        const video = card.querySelector('video');
+        if (video) {
+          if (this.classList.contains('sp-play-icon')) {
+            // Switch to pause icon
+            this.classList.remove('sp-play-icon');
+            this.classList.add('sp-pause-icon');
+            this.src = './assets/PAUSE.svg';
+            video.currentTime = 0;
+            video.play();
+          } else {
+            // Switch to play icon
+            this.classList.remove('sp-pause-icon');
+            this.classList.add('sp-play-icon');
+            this.src = './assets/PLAY.svg';
+            video.pause();
+          }
+        }
+      });
+    });
+
+
+    // Also handle when video ends naturally
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      video.addEventListener('ended', function () {
+        const card = this.closest('.sp-card');
+        let icon = card.querySelector('.sp-pause-icon, .sp-play-icon');
+        if (icon) {
+          icon.classList.remove('sp-pause-icon');
+          icon.classList.add('sp-play-icon');
+          icon.src = './assets/PLAY.svg';
+        }
+      });
+    });
+    // Unmute/mute video on hover of .sp-gif-card
+    const gifVideos = document.querySelectorAll('.sp-gif-card');
+    gifVideos.forEach(vid => {
+      vid.addEventListener('mouseenter', function () {
+        this.muted = false;
+        this.volume = 1.0;
+        this.play(); // force play in case browser paused it
+      });
+      vid.addEventListener('mouseleave', function () {
+        this.muted = true;
+      });
+    });
+  </script>
+</body>
+
+</html>
